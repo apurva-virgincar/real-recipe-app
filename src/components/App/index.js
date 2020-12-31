@@ -3,28 +3,40 @@ import React from 'react';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
-import LandingPage from '../Landing';
-import SignInPage from '../SignIn';
-import SignUpPage from '../SignUp';
-//import PasswordForgetPage from '../';
-import HomePage from '../Home';
-import AccountPage from '../Account';
-import AdminPage from '../Admin';
 
+import Application from '../Application';
+import ShopList from '../ShopList';
 
 import * as ROUTES from '../../constants/routes';
+import UserProvider from '../../providers/userprovider';
+
+/*function App() {
+  const user = null;
+  return (
+        user ?
+        <ProfilePage />
+      :
+        <Router>
+          <SignUp path="signUp" />
+          <SignIn path="/" />
+          <PasswordReset path = "passwordReset" />
+        </Router>
+
+  );
+}*/
 
 const App=()=>(
     <Router>
         <div>
-       <Navigation/>
+            <Navigation/>
+            <hr/>
+            <UserProvider><Application/></UserProvider>
+      
+
+       
         <hr/>
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />      
-      <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path={ROUTES.ShopList} component={ShopList}/>
+
     </div>
     </Router>
 );
