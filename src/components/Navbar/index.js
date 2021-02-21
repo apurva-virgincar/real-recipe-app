@@ -1,19 +1,40 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
- const Navbar = ()=>{
-    return(
-            <nav className="nav-wrapper">
-                <div className="container">
-                    <Link to="/" className="brand-logo">Shopping</Link>
-                    
-                    <ul className="right">
-                        <li><Link to="/">Shop</Link></li>
-                        <li><Link to="/cart">My cart</Link></li>
-                        <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
-                    </ul>
-                </div>
-            </nav>  
-    )
-}
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import styled from 'styled-components';
+const Styles = styled.div`
+  .navbar { background-color: #222; }
+  a, .navbar-nav, .navbar-light .nav-link {
+    color: #9FFFCB;
+    &:hover { color: white; }
+  }
+  .navbar-brand {
+    font-size: 1.4em;
+    color: #9FFFCB;
+    &:hover { color: white; }
+  }
+  .form-center {
+    position: absolute !important;
+    left: 25%;
+    right: 25%;
+  }
+`;
+export const NavigationBar = () => (
+  <Styles>
+    <Navbar expand="lg">
+    <Form>
+        <FormControl type="text" placeholder="Search" className="" />
+      </Form>
+      <Navbar.Brand href="/ShopList">Shopping List</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+      
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <Nav.Item><Nav.Link href="/SignUp">Sign Up</Nav.Link></Nav.Item> 
+          <Nav.Item><Nav.Link href="/">Sign In</Nav.Link></Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  </Styles>
+)
 
-export default Navbar;
+export default NavigationBar;
